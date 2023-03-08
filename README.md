@@ -8,3 +8,8 @@ rowers.txt
 
 This code reads the text files and outputs date-stamped CSV files that can be 
 imported into G Suite to update our mailing lists.
+
+Needs a config.ini file with the following format:
+[DEFAULT]
+RowersGroupName = "rowers@salinerowing.org"
+ParentsGroupName = "parents@salinerowing.org"
