@@ -1,5 +1,20 @@
+import configparser
 import csv
 import datetime
+
+config = configparser.ConfigParser
+
+# Read the configuration file
+config.read('myconfig.ini')
+
+# Get the values of the variables
+rowersgroupname = config.get('DEFAULT', 'rowersgroupname')
+parentsgroupname = config.get('DEFAULT', 'parentsgroupname')
+
+# Print the values to verify
+print("Read the values:")
+print(rowersgroupname)
+print(parentsgroupname)
 
 """Set the paths for the input files and output files."""
 rowers_input_file = 'rowers.txt'
@@ -42,7 +57,7 @@ with open(rowers_output_file, 'w', newline='') as file:
     writer.writerow(['Group Email [Required]', 'Member Email', 'Member Type', 'Member Role'])
     # write each email address as a row in the csv file
     for email in rower_emails:
-        writer.writerow(['rowers@salinerowing.org', email, 'USER', 'MEMBER'])
+        writer.writerow([rowersgroupname, email, 'USER', 'MEMBER'])
     print ("File", rowers_output_file,"written")
 
 with open(parents_output_file, 'w', newline='') as file:
@@ -50,7 +65,7 @@ with open(parents_output_file, 'w', newline='') as file:
     writer.writerow(['Group Email [Required]', 'Member Email', 'Member Type', 'Member Role'])
     # write each email address as a row in the csv file
     for email in parent_emails:
-        writer.writerow(['parents@salinerowing.org', email, 'USER', 'MEMBER'])
+        writer.writerow([parentsgroupname, email, 'USER', 'MEMBER'])
     print ("File", parents_output_file,"written")
 
 # write the invalid email addresses to files
