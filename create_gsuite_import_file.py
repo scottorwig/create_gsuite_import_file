@@ -1,15 +1,14 @@
-import configparser
+import json
 import csv
 import datetime
 
-config = configparser.ConfigParser
-
 # Read the configuration file
-config.read('myconfig.ini')
+with open('myconfig.json', 'r') as f:
+    config = json.load(f)
 
 # Get the values of the variables
-rowersgroupname = config.get('DEFAULT', 'rowersgroupname')
-parentsgroupname = config.get('DEFAULT', 'parentsgroupname')
+rowersgroupname = config['rowersgroupname']
+parentsgroupname = config['parentsgroupname']
 
 # Print the values to verify
 print("Read the values:")
