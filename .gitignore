@@ -1,1 +1,3 @@
-.txt, .json, .ini, .csv
+*.txt
+*.csv
+*.json
